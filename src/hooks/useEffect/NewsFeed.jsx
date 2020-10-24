@@ -7,32 +7,29 @@ import NewsItem from "./NewsItem"
 
 export default function NewsFeed() {
   const loading = false
-  const newsItems = [
-    {
-      id: "news-1,",
-      headline: "Headline 1",
-      content:
-        "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at",
-    },
-    {
-      id: "news-2",
-      headline: "Headline 2",
-      content:
-        "Tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
-    },
-  ]
+  const [newsItems, setNewsItems] = React.useState([])
 
-  function loadData() {
+  React.useEffect(loadData, [])
+  React.useEffect(() => {
+    if(newsItems.length > 10) {
+      analytics.moreThanTenItemsShown()
+    }
+  }, [newsItems])
+
+  function loadData( initialNewsItems = []) {
     // TODO: Update newsItems here
+    api.todaysNews().then(newNewsItems => setNewsItems([...newsItems, ...newNewsItems]))
   }
 
   function onDismissAll() {
     // TODO: Update newsItems here
+    setNewsItems([]);
   }
 
   function removeNewsItem(itemToRemove) {
     const newsItemsToKeep = newsItems.filter(item => item!== itemToRemove)
     // TODO: Update newsItems here
+    setNewsItems(newsItemsToKeep)
   }
 
   return (

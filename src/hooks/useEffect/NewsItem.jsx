@@ -7,6 +7,12 @@ export default function NewsItem({
   content,
   onDismiss = () => {},
 }) {
+
+  React.useEffect(() => {
+    analytics.newsItemSeen(id);
+    return() => {analytics.newsItemRemoved(id)};
+  }, [])
+
   return (
     <div className="media mb-3">
       <img

@@ -1,67 +1,62 @@
 import React from "react"
 
-function LikeButton() {
+function LikeButton({ initialValue = 0}) {
+  const [likes, setLikes] = React.useState(initialValue);
+  function onChange() {
+    setLikes(likesCount => likesCount + 1)
+  }
   return (
-    <button type="button" className="btn btn-primary">
-      Like
+    <button type="button" className="btn btn-primary" onClick={onChange}>
+      Like ({likes})
     </button>
   )
 }
 
-class NewsItem extends React.Component {
-  constructor(props) {
-    super()
-    this.state = {
-      headline: props.initialHeadline,
-      tag: null
-    }
-    this.onHeadlineInputChange = this.onHeadlineInputChange.bind(this)
-    this.onTagSelectChange = this.onTagSelectChange.bind(this)
+function NewsItem({ initialHeadline, content, initialTag = null }) {
+  const [headline, setHeadline] = React.useState(initialHeadline);
+  const [tag, setTag] = React.useState(initialTag);
+
+  const onHeadlineInputChange = (event) => {
+    setHeadline(event.target.value)
   }
 
-  onHeadlineInputChange(event) {
-    this.setState({ headline: event.target.value })
+  const onTagSelectChange = (event) => {
+    setTag(event.target.value)
   }
 
-  onTagSelectChange(event) {
-    this.setState({ tag: event.target.value })
-  }
-
-  render() {
-    const tagOptions = ["", "World", "Finance", "Sport", "Gossip"]
-    return (
-      <div className="media">
-        <img
-          alt="64x64"
-          className="mr-3"
-          data-src="holder.js/64x64"
-          src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNzE1NTBhNzU4MyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE3MTU1MGE3NTgzIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40NjA5Mzc1IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg=="
-          style={{
-            width: 64,
-            height: 64,
-          }}
-        ></img>
-        <div className="media-body column p-3">
-          <h4>{this.state.headline}  <span className="badge badge-info">{this.state.tag}</span></h4>
-          <div className="mb-2">{this.props.content}</div>
-          <div>
-            <LikeButton />
-          </div>
-        </div>
-        <div className="card column col-auto p-3">
-          <div className="form-group">
-            <input className="form-input" placeholder="Edit Headline" onChange={this.onHeadlineInputChange}/>
-          </div>
-          <div className="form-group">
-            <label className="form-label" htmlFor='tag-select'>Select Tag</label>
-            <select className="form-select ml-2" id='tag-select' onChange={this.onTagSelectChange}>
-              {tagOptions.map(value => <option key={value}>{value}</option>)}
-            </select>
-          </div>
+  const tagOptions = ["", "World", "Finance", "Sport", "Gossip"]
+  return (
+    <div className="media">
+      <img
+        alt="64x64"
+        className="mr-3"
+        data-src="holder.js/64x64"
+        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNzE1NTBhNzU4MyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE3MTU1MGE3NTgzIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40NjA5Mzc1IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg=="
+        style={{
+          width: 64,
+          height: 64,
+        }}
+      ></img>
+      <div className="media-body column p-3">
+        <h4>{headline}  <span className="badge badge-info">{tag}</span></h4>
+        <div className="mb-2">{content}</div>
+        <div>
+          <LikeButton />
         </div>
       </div>
-    )
-  }
+      <div className="card column col-auto p-3">
+        <div className="form-group">
+          <input className="form-input" placeholder="Edit Headline" onChange={onHeadlineInputChange}/>
+        </div>
+        <div className="form-group">
+          <label className="form-label" htmlFor='tag-select'>Select Tag</label>
+          <select className="form-select ml-2" id='tag-select' onChange={onTagSelectChange}>
+            {tagOptions.map(value => <option key={value}>{value}</option>)}
+          </select>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default function App() {
