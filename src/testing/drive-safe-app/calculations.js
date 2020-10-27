@@ -6,7 +6,7 @@ import {
 } from "./constants"
 
 export function calculateDrivingLevel({ drivingScore }) {
-  if (drivingScore > 90) {
+  if (drivingScore >= 90) {
     return DRIVING_LEVEL_VERY_SAFE
   } else if (drivingScore >= 70) {
     return DRIVING_LEVEL_SAFE

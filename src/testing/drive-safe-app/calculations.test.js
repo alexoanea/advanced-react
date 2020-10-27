@@ -32,3 +32,33 @@ describe("calculateDrivingScore", () => {
     expect(output).toBe(0)
   })
 })
+
+describe("calculateDrivingLevel", () => {
+  test("score 30 -> driving level unsafe", () => {
+    const output = calculateDrivingLevel({ drivingScore: 30})
+    expect(output).toBe(DRIVING_LEVEL_UNSAFE)
+  })
+
+  test("score 90 -> driving level unsafe", () => {
+    const output = calculateDrivingLevel({ drivingScore: 90})
+    expect(output).toBe(DRIVING_LEVEL_VERY_SAFE)
+  })
+})
+
+describe("calculateDrivingAssessment", () => {
+  test("trips", () => {
+    const output = calculateDrivingAssessment({
+      trips: [
+        {incidents: 73, distance: 50},
+        {incidents: 11, distance: 70}
+      ]
+    })
+    expect(output).toEqual( {
+      drivingScore: 30,
+      drivingLevel: DRIVING_LEVEL_UNSAFE,
+      tripsCount: 2,
+      incidentsCount: 84,
+      totalDistance: 120
+    })
+  })
+})
