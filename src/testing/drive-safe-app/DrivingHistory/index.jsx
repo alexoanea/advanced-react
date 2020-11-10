@@ -8,45 +8,9 @@ function TripRow({ tripNumber, trip, onConfirmTrip }) {
   const drivingScore = calculateDrivingScore({ distance, incidents })
   const drivingLevel = calculateDrivingLevel({ drivingScore })
   const { color } = drivingLevelDisplay[drivingLevel]
-  // return (
-  //   <tr data-testid="trip-row" style={{ background: color }}>
-  //     <td>{tripNumber}</td>
-  //     <td>{date}</td>
-  //     <td>{distance}</td>
-  //     <td>{incidents}</td>
-  //     <td>{drivingScore}</td>
-  //     <td>
-  //       {confirmed ? (
-  //         "Confirmed"
-  //       ) : (
-  //         <button
-  //           type="button"
-  //           className="btn btn-dark btn-sm"
-  //           onClick={onConfirmTrip}
-  //         >
-  //           Confirm Trip
-  //         </button>
-  //       )}
-  //     </td>
-  //   </tr>
-  // )
   return (
-    <tr data-testid="trip-row">
-      <td>
-        <div
-          style={{
-            background: color,
-            width: 30,
-            height: 30,
-            borderRadius: 30,
-            justifyContent: "center",
-            alignItems: "center",
-            display: "flex",
-          }}
-        >
-          {tripNumber}
-        </div>
-      </td>
+    <tr data-testid="trip-row" style={{ background: color }}>
+      <td>{tripNumber}</td>
       <td>{date}</td>
       <td>{distance}</td>
       <td>{incidents}</td>
@@ -66,6 +30,42 @@ function TripRow({ tripNumber, trip, onConfirmTrip }) {
       </td>
     </tr>
   )
+  // return (
+  //   <tr data-testid="trip-row">
+  //     <td>
+  //       <div
+  //         style={{
+  //           background: color,
+  //           width: 30,
+  //           height: 30,
+  //           borderRadius: 30,
+  //           justifyContent: "center",
+  //           alignItems: "center",
+  //           display: "flex",
+  //         }}
+  //       >
+  //         {tripNumber}
+  //       </div>
+  //     </td>
+  //     <td>{date}</td>
+  //     <td>{distance}</td>
+  //     <td>{incidents}</td>
+  //     <td>{drivingScore}</td>
+  //     <td>
+  //       {confirmed ? (
+  //         "Confirmed"
+  //       ) : (
+  //         <button
+  //           type="button"
+  //           className="btn btn-dark btn-sm"
+  //           onClick={onConfirmTrip}
+  //         >
+  //           Confirm Trip
+  //         </button>
+  //       )}
+  //     </td>
+  //   </tr>
+  // )
 }
 
 export default function DrivingHistory({ trips, confirmTrip }) {

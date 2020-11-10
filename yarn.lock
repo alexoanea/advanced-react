@@ -7075,10 +7075,10 @@ sisteransi@^0.1.1:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-0.1.1.tgz#5431447d5f7d1675aac667ccd0b865a4994cb3ce"
   integrity sha512-PmGOd02bM9YO5ifxpw36nrNMBTptEtfRl4qUYl9SndkolplkrZZOW7PGHjrZL53QvMVj9nQ+TKqUnRsw4tJa4g==
 
-skiller-whale-sync@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/skiller-whale-sync/-/skiller-whale-sync-1.4.0.tgz#f28e5fb77b45141b6545ef153d69fda4d76377f1"
-  integrity sha512-186RqKtbRSOQ1KnOIl2UKkmjNv+RdR7la3Dkz/PrXhvzvMuQPL/4DQPKR4MH6769EeQ9EOtOSFh5AkGSe2RUUA==
+skiller-whale-sync@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/skiller-whale-sync/-/skiller-whale-sync-1.5.0.tgz#96c591c42be182dee8b5aee19873754f26300d05"
+  integrity sha512-FZiHd+5kWNg0oYR+WqY0N6JfAP42948TO0Nlxp7najzpf03RDfvPA0VjPiVjEIBkJJ03hUrJd/Yg1C5XWxVMaA==
   dependencies:
     concurrently "^4.1.0"
     cross-spawn "^6.0.5"

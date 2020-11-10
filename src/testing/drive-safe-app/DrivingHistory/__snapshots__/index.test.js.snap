@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DrivingHistory driving history snapshot test  1`] = `
+<body>
+  <div>
+    <div
+      style="max-width: 900px;"
+    >
+      <h2
+        class="mb-4"
+      >
+        Your Trips
+      </h2>
+      <table
+        class="table"
+      >
+        <thead>
+          <tr>
+            <th>
+              #
+            </th>
+            <th>
+              Date
+            </th>
+            <th>
+              Distance (miles)
+            </th>
+            <th>
+              Incidents
+            </th>
+            <th>
+              Score
+            </th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            data-testid="trip-row"
+            style="background: rgb(20, 255, 20);"
+          >
+            <td>
+              1
+            </td>
+            <td>
+              1st July 2020
+            </td>
+            <td>
+              100
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              95
+            </td>
+            <td>
+              Confirmed
+            </td>
+          </tr>
+          <tr
+            data-testid="trip-row"
+            style="background: rgb(46, 230, 241);"
+          >
+            <td>
+              2
+            </td>
+            <td>
+              3rd July 2020
+            </td>
+            <td>
+              100
+            </td>
+            <td>
+              15
+            </td>
+            <td>
+              85
+            </td>
+            <td>
+              Confirmed
+            </td>
+          </tr>
+          <tr
+            data-testid="trip-row"
+            style="background: rgb(255, 71, 71);"
+          >
+            <td>
+              3
+            </td>
+            <td>
+              5th July 2020
+            </td>
+            <td>
+              8
+            </td>
+            <td>
+              35
+            </td>
+            <td>
+              0
+            </td>
+            <td>
+              <button
+                class="btn btn-dark btn-sm"
+                type="button"
+              >
+                Confirm Trip
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+`;

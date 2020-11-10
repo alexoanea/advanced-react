@@ -12,6 +12,20 @@ import {
 } from "./calculations"
 
 describe("calculateDrivingScore", () => {
+
+  test.each([
+    [{ distance: 100, incidents: 0 }, 100],
+    [{ distance: 100, incidents: 50 }, 50],
+    [{ distance: 100, incidents: 100 }, 0],
+    [{ distance: 100, incidents: 101 }, 0],
+    [{ distance: 100, incidents: 70 }, 30],
+    [{ distance: 100, incidents: 10 }, 90],
+  ])("calculation of driving score", (trip_data, epxected_driving_score) => {
+    const output = calculateDrivingScore(trip_data)
+    expect(output).toBe(epxected_driving_score)
+  })
+
+  
   test("distance 100 incidents 0 -> driving score 100", () => {
     const output = calculateDrivingScore({ distance: 100, incidents: 0 })
     expect(output).toBe(100)
